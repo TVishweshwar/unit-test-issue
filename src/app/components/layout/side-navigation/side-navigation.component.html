@@ -9,7 +9,12 @@
       (click)="setClicked(item)"
       [disableRipple]="true">
       <span class="flex-container">
-        <app-svg-icon class="dynamic-color" [path]="getIconPath(item)" />
+        <mat-icon>
+          <img
+            [src]="getIconPath(item)"
+            style="height: 23px; width: 23px"
+            alt="notif" />
+        </mat-icon>
         <span
           class="flex-item"
           [style.color]="

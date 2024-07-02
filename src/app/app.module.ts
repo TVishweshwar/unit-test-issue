@@ -24,7 +24,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactWrapperComponent } from './components/utility/react-wrapper/react-wrapper.component';
 import { ErrorService } from './services/shared/error.service';
 import { HoverDirective } from './services/directives/hover.directive';
-import { SvgIconComponent } from './components/common/svg-icon/svg-icon.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +44,6 @@ import { SvgIconComponent } from './components/common/svg-icon/svg-icon.componen
     SearchComponent,
     ReactWrapperComponent,
     HoverDirective,
-    SvgIconComponent,
   ],
   imports: [
     BrowserModule,
