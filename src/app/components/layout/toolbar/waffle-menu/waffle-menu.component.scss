@@ -1,0 +1,50 @@
+.waffle-grid {
+  width: 100%;
+}
+
+.waffle-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  outline: none;
+}
+
+.tile-button:hover {
+  transform: scale(1.05);
+}
+
+.tile-label {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .waffle-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tile-button {
+    padding: 5px;
+  }
+
+  .tile-label {
+    font-size: 12px;
+  }
+}

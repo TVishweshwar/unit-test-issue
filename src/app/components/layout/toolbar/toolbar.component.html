@@ -1,0 +1,102 @@
+<mat-toolbar color="primary bg-primary-colour">
+  <div class="left-section">
+    <!-- button show on sm screen -->
+    <button
+      mat-icon-button
+      aria-label="Menu icon"
+      class="sm-menu-icon"
+      (click)="toggleMenu()">
+      <mat-icon><img src="assets/images/menuWhite.svg" alt="notif" /></mat-icon>
+    </button>
+  </div>
+  <div class="middle-section">
+    <img src="assets/images/logo.svg" style="height: 35px" alt="notif" />
+  </div>
+  <div class="search-container lg-menu-icon">
+    <div class="search">
+      <img
+        class="search-icon material-icons"
+        src="assets/images/search.svg"
+        style="height: 35px"
+        (click)="toggleSearch()"
+        [attr.tabindex]="null"
+        (keydown)="handleKeydown($event)"
+        alt="search-icon" />
+      <input
+        type="text"
+        (click)="toggleSearch()"
+        [ngStyle]="{ width: isExpanded ? '300px' : '200px' }"
+        placeholder="Search anything here..."
+        name="search" />
+    </div>
+  </div>
+  <span class="spacer lg-menu-icon"></span>
+  <span class="right-end-icon">
+    <button
+      class="sm-menu-icon"
+      mat-icon-button
+      aria-label="Apps icon"
+      (click)="openSearchDrawer()">
+      <img src="assets/images/searchWhite.svg" alt="search" />
+    </button>
+    <button
+      class="custom-hover-button"
+      mat-icon-button
+      aria-label="Apps icon"
+      aria-label="Notifications icon"
+      (click)="openNotificationsDrawer(); closeWaffleMenuDialog()"
+      [appHover]="topItems[0]"
+      *ngIf="isNewNotif; else newNotif">
+      <img [src]="getIconPath(topItems[0])" alt="notif" />
+    </button>
+    <!--When dynamic notifications fetched, below bell icon can be used for unread-->
+    <ng-template #newNotif
+      ><button
+        class="custom-hover-button"
+        mat-icon-button
+        aria-label="Apps icon"
+        aria-label="Notifications icon"
+        (click)="openNotificationsDrawer()"
+        [appHover]="topItems[1]">
+        <img [src]="getIconPath(topItems[1])" alt="notif" />
+      </button>
+    </ng-template>
+    <button
+      (click)="closeWaffleMenuDialog()"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Apps icon"
+      class="custom-hover-button">
+      <img src="assets/images/profilePhoto.svg" alt="notif" />
+    </button>
+    <button
+      class="lg-menu-icon custom-hover-button"
+      mat-icon-button
+      aria-label="Apps icon"
+      (click)="openWaffleDialog()"
+      [appHover]="topItems[2]"
+      [class.active]="isDrawerOpen">
+      <img [src]="getIconPath(topItems[2])" alt="notif" />
+    </button>
+  </span>
+</mat-toolbar>
+<app-notifications [username]="userName"></app-notifications>
+<mat-menu #menu="matMenu" (closed)="resetStates()">
+  <button
+    *ngFor="let option of menuOptions; let i = index"
+    class="option-button"
+    mat-menu-item
+    (click)="option.action(); sharedService.setClicked(option, true)"
+    [appHover]="option">
+    <span class="flex-container">
+      <mat-icon
+        ><app-editable-svg
+          [fillColor]="
+            option.isHovered || option.isClicked ? primaryColor : black
+          "
+          [svgName]="option.svgName"></app-editable-svg
+      ></mat-icon>
+      <span class="body1">{{ option.label }}</span>
+    </span>
+  </button>
+</mat-menu>

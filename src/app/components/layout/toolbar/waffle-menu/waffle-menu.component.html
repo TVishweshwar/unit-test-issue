@@ -1,0 +1,27 @@
+<mat-grid-list cols="4" rowHeight="50%" class="waffle-grid">
+  <mat-grid-tile
+    *ngFor="let tile of tiles; let i = index"
+    [colspan]="1"
+    [rowspan]="1"
+    class="waffle-tile">
+    <button
+      class="option-button"
+      [appHover]="tile"
+      (click)="sharedService.setClicked(tile, true)"
+      class="tile-button secondary-colour"
+      [routerLink]="tile.routerLink"
+      routerLinkActive="active">
+      <mat-icon>
+        <img
+          [src]="getIconPath(tile)"
+          style="height: 23px; width: 23px"
+          alt="notif" />
+      </mat-icon>
+      <div
+        class="tile-label"
+        [style.color]="tile.isHovered || tile.isClicked ? primaryColor : black">
+        {{ tile.label }}
+      </div>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>

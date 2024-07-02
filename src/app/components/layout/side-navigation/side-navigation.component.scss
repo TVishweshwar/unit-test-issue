@@ -1,0 +1,49 @@
+.active {
+  color: var(
+    --custom-primary-color
+  ); /* For example, change the color of the link when active */
+  font-weight: 600; /* Make the link bold when active */
+  background-color: var(--custom-primary-color-lighter);
+}
+
+.bottom-items {
+  position: absolute; /* Position the bottom items relative to the sidebar */
+  bottom: 0; /* Align the bottom items to the bottom of the sidebar */
+  left: 0; /* Align the bottom items to the left of the sidebar */
+  width: 100%;
+}
+
+.option-button {
+  color: var(--major-label-colour);
+  border-left: solid transparent;
+}
+
+.option-button:hover,
+.option-button.mat-button-focus,
+.option-button:active {
+  color: var(--custom-primary-color);
+  background-color: var(--custom-primary-color-lighter);
+  border-radius: 0px;
+}
+.option-button.active {
+  border-left-color: var(--custom-primary-color);
+  background-color: var(--custom-primary-color-lighter);
+  border-radius: 0px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.flex-item {
+  margin-left: 8px;
+}
+
+.menu-top {
+  margin-top: 76px;
+}
+
+.dynamic-color {
+  background-color: var(--custom-primary-color);
+}
